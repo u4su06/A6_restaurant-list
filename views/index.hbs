@@ -12,7 +12,7 @@
             <button class="btn btn-outline-secondary" type="submit" id="search-button">
               <i class="fas fa-search"></i>
             </button>
-            <a href="./rests/new" class="btn btn-outline-dark">Create</a>
+            <a href="./rests/new" class="btn btn-outline-dark"><i class="fas fa-plus"></i></a>
           </div>
         </div>
       </form>
@@ -31,10 +31,12 @@
             <i class="fas fa-star mr-1"></i>{{this.rating}}
           </p>
           <div class="row justify-content-around mx-1">
-            <span class="mr-2"><a href="./rests/{{ this._id }}/edit" class="btn btn-outline-dark">edit</a></span>
-            <span class="mr-auto"><a href="./rests/{{ this._id }}" class="btn btn-outline-dark">detail</a></span>
+            <span class="mr-2"><a href="./rests/{{ this._id }}/edit" class="btn btn-outline-dark"><i
+                  class="fas fa-pen"></i></a></span>
+            <span class="mr-auto"><a href="./rests/{{ this._id }}" class="btn btn-outline-dark"><i
+                  class="fas fa-info px-1"></i></a></span>
             <form action="./rests/{{ this._id }}/delete" method="POST" style="display: inline;">
-              <button type="submit" class="btn btn-secondary">delete</button>
+              <button type="submit" class="btn btn-secondary"><i class="fas fa-trash-alt"></i></button>
             </form>
           </div>
         </div>

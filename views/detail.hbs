@@ -9,10 +9,11 @@
         <i class="fas fa-utensils mr-2"></i>{{rest.category}}
         <i class="fas fa-star mx-2"></i>{{rest.rating}}
       </p>
-      <p><i class="fas fa-phone-alt mr-2"></i>phone：{{rest.phone}}</p>
+      <p>
+        <i class="fas fa-mobile-alt mr-2"></i>{{rest.phone}}
+      </p>
       <p>
         <i class="fas fa-map-marker-alt mr-2"></i>{{rest.location}}
-        </a>
       </p>
       <p>
         {{rest.description}}
@@ -24,10 +25,11 @@
   </div>
   <div class="row justify-content-around">
     <div class="col-6 row">
-      <span class="mr-2"><a href="/rests/{{ rest._id }}/edit" class="btn btn-outline-dark">edit</a></span>
-      <span class="mr-auto"><a href="/" class="btn btn-outline-dark">back</a></span>
+      <span class="mr-2"><a href="/rests/{{ rest._id }}/edit" class="btn btn-outline-dark"><i
+            class="fas fa-pen"></i></a></span>
+      <span class="mr-auto"><a href="/" class="btn btn-outline-dark"><i class="fas fa-times"></i></a></span>
       <form action="/rests/{{ rest._id }}/delete" method="POST" style="display: inline;">
-        <button type="submit" class="btn btn-secondary">delete</button>
+        <button type="submit" class="btn btn-secondary"><i class="fas fa-trash-alt"></i></button>
       </form>
     </div>
   </div>
