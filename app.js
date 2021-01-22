@@ -48,7 +48,8 @@ app.post('/rests', (req, res) => {
     phone: item.phone,
     location: item.location,
     description: item.description,
-    image: item.img
+    image: item.img,
+    rating: item.rating
   })
     .then(() => res.redirect('/'))
     .catch(error => console.log(error))

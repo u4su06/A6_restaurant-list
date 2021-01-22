@@ -5,48 +5,48 @@
       <div class="col-6 mx-auto">
         <p>
           <span>名稱：</span>
-          <input type="text" name="name" value="{{rest.name}}" class="col-9 mt-2">
+          <input type="text" name="name" value="{{rest.name}}" class="col-9 mt-2" required>
         </p>
         <p>
           <span>評分：</span>
-          <input type="text" name="rating" value="{{rest.rating}}" class="col-9 mt-2">
+          <input type="text" name="rating" value="{{rest.rating}}" class="col-9 mt-2" required>
         </p>
         <p>
           <span>種類：</span>
-          <input type="text" name="category" value="{{rest.category}}" class="col-9 mt-2">
+          <input type="text" name="category" value="{{rest.category}}" class="col-9 mt-2" required>
         </p>
         <p>
           <span>電話：</span>
-          <input type="text" name="phone" value="{{rest.phone}}" class="col-9 mt-2">
+          <input type="text" name="phone" value="{{rest.phone}}" class="col-9 mt-2" required>
         </p>
         <p>
           <span>地址：</span>
-          <input type="text" name="location" value="{{rest.location}}" class="col-9 mt-2">
+          <input type="text" name="location" value="{{rest.location}}" class="col-9 mt-2" required>
         </p>
         <p>
           <span>簡述：</span>
-          <textarea type="text" name="description" class="col-12 mt-2" rows="5">{{rest.description}}</textarea>
+          <textarea type="text" name="description" class="col-12 mt-2" rows="5" required>{{rest.description}}</textarea>
         </p>
         <p>
           <span>圖片：</span>
         </p>
         <div class="row justify-content-between mx-2">
-          <div class="card col-5">
+          <div class="card col-5 px-0">
             <label>
               <div>
                 <img class="card-img-top"
-                  src="https://cdn.pixabay.com/photo/2020/08/23/06/54/cooking-5510047_960_720.png" class="card-img-top"
+                  src="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5631/05.jpg" class="card-img-top"
                   alt="...">
               </div>
               <div class="card-body text-center align-slef-end">
                 <input type="radio" class="form-check-input mr-1" id="" name="img"
-                  value="https://cdn.pixabay.com/photo/2020/08/23/06/54/cooking-5510047_960_720.png" disabled>預設
+                  value="https://assets-lighthouse.s3.amazonaws.com/uploads/image/file/5631/05.jpg" disabled>預設
               </div>
             </label>
           </div>
-          <div class="card col-5">
+          <div class="card col-5 px-0">
             <label>
-              <div class="mb-5">
+              <div>
                 <img class="card-img-top" src="{{rest.image}}" class="card-img-top">
               </div>
               <div class="card-body text-center col align-self-end">
@@ -58,7 +58,7 @@
       </div>
     </div>
     <div class="text-center mt-5">
-      <button type="submit" class="btn btn-outline-dark">Save</button>
+      <button type="submit" class="btn btn-outline-dark mr-2">Save</button>
       <a href="/" class="btn btn-outline-dark">back</a>
     </div>
   </form>
