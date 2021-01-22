@@ -82,6 +82,7 @@ app.post('/rests/:id/edit', (req, res) => {
       rest.phone = item.phone
       rest.location = item.location
       rest.description = item.description
+      rest.rating = item.rating
       return rest.save()
     })
     .then(() => res.redirect(`/rests/${id}`))
