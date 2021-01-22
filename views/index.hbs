@@ -21,18 +21,19 @@
   <div class="row" id="data-panel">
     {{#each rests}}
     <div class="col-sm-4">
-      <a href="/restaurants/{{this.id}}" class="text-secondary">
-        <div class="card mb-2">
-          <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
-          <div class="card-body rest-item-body">
-            <h6 class="card-title">{{this.name}}</h6>
-            <p class="small">
-              <i class="fas fa-utensils mr-1"></i>{{this.category}}
-              <i class="fas fa-star mr-1"></i>{{this.rating}}
-            </p>
-          </div>
+
+      <div class="card mb-2">
+        <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
+        <div class="card-body rest-item-body">
+          <h6 class="card-title">{{this.name}}</h6>
+          <p class="small">
+            <i class="fas fa-utensils mr-1"></i>{{this.category}}
+            <i class="fas fa-star mr-1"></i>{{this.rating}}
+          </p>
+          <span><a href="./rests/{{ this._id }}" class="btn btn-outline-dark">detail</a></span>
         </div>
-      </a>
+      </div>
+
     </div>
     {{/each}}
   </div>

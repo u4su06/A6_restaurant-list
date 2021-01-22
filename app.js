@@ -30,6 +30,20 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error)) // 錯誤處理
 })
 
+// detail 頁面
+app.get('/rests/:id', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((rest) => res.render('detail', { rest }))
+    .catch(error => console.log(error))
+})
+
+// 新增頁面
+app.get('/rests/new', (req, res) => {
+  return res.render('new')
+})
+
 // 開啟並監聽伺服器 port 3000
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
