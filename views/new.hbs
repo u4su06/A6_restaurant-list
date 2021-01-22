@@ -1,0 +1,66 @@
+<!-- ./views/new.handlebars -->
+<div class="container py-5">
+  <form action="/rests" method="POST">
+    <div class="row mb-3">
+      <div class="col-6 mx-auto">
+        <p>
+          <span>名稱：</span>
+          <input type="text" name="name" placeholder="name" class="col-9 mt-2" required>
+        </p>
+        <p>
+          <span>種類：</span>
+          <input type="text" name="category" placeholder="category" class="col-9 mt-2" required>
+        </p>
+        <p>
+          <span>電話：</span>
+          <input type="text" name="phone" placeholder="phone" class="col-9 mt-2" required>
+        </p>
+        <p>
+          <span>地址：</span>
+          <input type="text" name="location" placeholder="location" class="col-9 mt-2" required>
+        </p>
+        <p>
+          <span>簡述：</span>
+          <textarea type="text" name="description" class="col-12 mt-2" rows="5" placeholder="description"
+            required></textarea>
+        </p>
+        <p>
+          <span>圖片：</span>
+        </p>
+        <div class="row justify-content-between mx-2">
+          <div class="card col-5">
+            <label>
+              <div>
+                <img class="card-img-top"
+                  src="https://cdn.pixabay.com/photo/2020/08/23/06/54/cooking-5510047_960_720.png" class="card-img-top"
+                  alt="...">
+              </div>
+              <div class="card-body text-center">
+                <input type="radio" class="form-check-input mr-1" id="" name="img"
+                  value="https://cdn.pixabay.com/photo/2020/08/23/06/54/cooking-5510047_960_720.png" {{#if
+                  career.engineer}}checked{{/if}}>預設
+              </div>
+            </label>
+          </div>
+          <div class="align-self-center">
+            <span>or</span>
+          </div>
+          <div class="card col-5">
+            <label>
+              <div>
+                <img class="card-img-top" src="https://image.freepik.com/free-icon/upload-document_318-8461.jpg"
+                  class="card-img-top" alt="...">
+              </div>
+              <div class="card-body text-center">
+                <input type="radio" class="form-check-input mr-1" id="" name="img" value="upload" disabled>上傳
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="text-center mt-5">
+          <button type="submit" class="btn btn-outline-dark">Create</button>
+          <a href="/" class="btn btn-outline-dark">back</a>
+        </div>
+      </div>
+  </form>
+</div>

@@ -35,6 +35,25 @@ app.get('/', (req, res) => {
     .catch(error => console.error(error)) // 錯誤處理
 })
 
+// 新增頁面
+app.get('/rests/new', (req, res) => {
+  return res.render('new')
+})
+
+app.post('/rests', (req, res) => {
+  const item = req.body
+  return Restaurant.create({
+    name: item.name,
+    category: item.category,
+    phone: item.phone,
+    location: item.location,
+    description: item.description,
+    image: item.img
+  })
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 // detail 頁面
 app.get('/rests/:id', (req, res) => {
   const id = req.params.id
@@ -69,10 +88,6 @@ app.post('/rests/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-// 新增頁面
-app.get('/rests/new', (req, res) => {
-  return res.render('new')
-})
 
 // 開啟並監聽伺服器 port 3000
 app.listen(3000, () => {

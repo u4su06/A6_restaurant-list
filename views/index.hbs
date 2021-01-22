@@ -3,15 +3,16 @@
 
   <!-- search bar -->
   <div class="row" id="search-bar">
-    <div class="col-4">
+    <div class="col-12">
       <form action="/search">
         <div class="input-group mb-5">
-          <input type="text" name="keyword" value="{{keyword}}" class="form-control mr-2" placeholder="輸入餐廳..."
+          <input type="text" name="keyword" value="{{keyword}}" class="form-control" placeholder="輸入餐廳..."
             aria-label="Movie Name..." aria-describedby="search-button">
-          <div class="input-group-append">
+          <div class="input-group-append mr-auto">
             <button class="btn btn-outline-secondary" type="submit" id="search-button">
               <i class="fas fa-search"></i>
             </button>
+            <a href="./rests/new" class="btn btn-outline-dark">Create</a>
           </div>
         </div>
       </form>
