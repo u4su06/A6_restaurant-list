@@ -1,0 +1,36 @@
+<!-- ./views/edit.handlebars -->
+<div class="container py-5">
+  <form action="/rests/{{ rest._id }}/edit" method="POST">
+    <div class="row mb-3">
+      <div class="col-6 mx-auto">
+        <div>
+          <span>名稱：</span>
+          <input type="text" name="name" value="{{rest.name}}" class="col-9 mt-2">
+        </div>
+        <div>
+          <span>種類：</span>
+          <input type="text" name="category" value="{{rest.category}}" class="col-9 mt-2">
+        </div>
+        <div>
+          <span>電話：</span>
+          <input type="text" name="phone" value="{{rest.phone}}" class="col-9 mt-2">
+        </div>
+        <div>
+          <span>地址：</span>
+          <input type="text" name="location" value="{{rest.location}}" class="col-9 mt-2">
+        </div>
+        <div>
+          <span>簡述：</span>
+          <textarea type="text" name="description" class="col-12 mt-2" rows="5">{{rest.description}}</textarea>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mb-4">
+      <img src="{{rest.image}}" alt="Card image cap" style="max-height: 400px;">
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-outline-dark">Save</button>
+      <a href="/" class="btn btn-outline-dark">back</a>
+    </div>
+  </form>
+</div>

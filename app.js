@@ -1,7 +1,9 @@
 const express = require('express')  // 載入 express 並建構應用程式伺服器
-const mongoose = require('mongoose') // 載入 mongoose
 const exphbs = require('express-handlebars')  // 載入樣板引擎
+const bodyParser = require('body-parser') // 引用 body-parser
+const mongoose = require('mongoose') // 載入 mongoose
 const Restaurant = require('./models/restaurant') //載入restaurant model
+
 
 const app = express()
 
@@ -22,6 +24,9 @@ db.once('open', () => {
 app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
+// setting body-parser
+app.use(bodyParser.urlencoded({ extended: true }))
+
 // 設定首頁路由
 app.get('/', (req, res) => {
   Restaurant.find() // 取出 Restaurant model 裡的所有資料
@@ -36,6 +41,31 @@ app.get('/rests/:id', (req, res) => {
   return Restaurant.findById(id)
     .lean()
     .then((rest) => res.render('detail', { rest }))
+    .catch(error => console.log(error))
+})
+
+// edit 頁面
+app.get('/rests/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((rest) => res.render('edit', { rest }))
+    .catch(error => console.log(error))
+})
+
+app.post('/rests/:id/edit', (req, res) => {
+  const id = req.params.id
+  const item = req.body
+  return Restaurant.findById(id)
+    .then(rest => {
+      rest.name = item.name
+      rest.category = item.category
+      rest.phone = item.phone
+      rest.location = item.location
+      rest.description = item.description
+      return rest.save()
+    })
+    .then(() => res.redirect(`/rests/${id}`))
     .catch(error => console.log(error))
 })
 

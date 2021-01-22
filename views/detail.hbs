@@ -6,7 +6,7 @@
   <div class="row mb-3">
     <div class="col-6 mx-auto">
       <p><i class="fas fa-utensils mr-2"></i>{{rest.category}}</p>
-      <p><i class="fas fa-phone-alt mr-2"></i>{{rest.phone}}</p>
+      <p><i class="fas fa-phone-alt mr-2"></i>phone：{{rest.phone}}</p>
       <p>
         <i class="fas fa-map-marker-alt mr-2"></i>{{rest.location}}
         <a href="{{rest.google_map}}" class="text-secondary" target="_blank">
@@ -22,6 +22,7 @@
     <img src="{{rest.image}}" alt="Card image cap" style="max-height: 400px;">
   </div>
   <div class="text-center">
-    <a href="/" class="btn btn-outline-dark">back</a>
+    <span><a href="./{{ rest._id }}/edit" class="btn btn-outline-dark">edit</a></span>
+    <span></span><a href="/" class="btn btn-outline-dark">back</a></span>
   </div>
 </div>
