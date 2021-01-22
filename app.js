@@ -88,6 +88,15 @@ app.post('/rests/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// 刪除功能
+app.post('/rests/:id/delete', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .then(rest => rest.remove())
+    .then(() => res.redirect('/'))
+    .catch(error => console.log(error))
+})
+
 
 // 開啟並監聽伺服器 port 3000
 app.listen(3000, () => {

@@ -22,7 +22,6 @@
   <div class="row" id="data-panel">
     {{#each rests}}
     <div class="col-sm-4">
-
       <div class="card mb-2">
         <img class="card-img-top" src="{{this.image}}" alt="Card image cap">
         <div class="card-body rest-item-body">
@@ -31,8 +30,13 @@
             <i class="fas fa-utensils mr-1"></i>{{this.category}}
             <i class="fas fa-star mr-1"></i>{{this.rating}}
           </p>
-          <span><a href="./rests/{{ this._id }}/edit" class="btn btn-outline-dark">edit</a></span>
-          <span><a href="./rests/{{ this._id }}" class="btn btn-outline-dark">detail</a></span>
+          <div class="row justify-content-around mx-1">
+            <span class="mr-2"><a href="./rests/{{ this._id }}/edit" class="btn btn-outline-dark">edit</a></span>
+            <span class="mr-auto"><a href="./rests/{{ this._id }}" class="btn btn-outline-dark">detail</a></span>
+            <form action="./rests/{{ this._id }}/delete" method="POST" style="display: inline;">
+              <button type="submit" class="btn btn-secondary">delete</button>
+            </form>
+          </div>
         </div>
       </div>
 

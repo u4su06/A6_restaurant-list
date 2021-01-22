@@ -21,8 +21,13 @@
   <div class="text-center mb-4">
     <img src="{{rest.image}}" alt="Card image cap" style="max-height: 400px;">
   </div>
-  <div class="text-center">
-    <span><a href="./{{ rest._id }}/edit" class="btn btn-outline-dark">edit</a></span>
-    <span></span><a href="/" class="btn btn-outline-dark">back</a></span>
+  <div class="row justify-content-around">
+    <div class="col-6 row">
+      <span class="mr-2"><a href="/rests/{{ rest._id }}/edit" class="btn btn-outline-dark">edit</a></span>
+      <span class="mr-auto"><a href="/" class="btn btn-outline-dark">back</a></span>
+      <form action="/rests/{{ rest._id }}/delete" method="POST" style="display: inline;">
+        <button type="submit" class="btn btn-secondary">delete</button>
+      </form>
+    </div>
   </div>
 </div>
