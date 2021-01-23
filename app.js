@@ -99,6 +99,19 @@ app.post('/rests/:id/delete', (req, res) => {
     .catch(error => console.log(error))
 })
 
+// 搜尋功能
+app.get('/search', (req, res) => {
+  const keyword = req.query.keyword
+  Restaurant.find() // 取出 Restaurant model 裡的所有資料
+    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
+    .then(rests => {
+      let filterRests = rests.filter(item => {  //根據 keyword 篩選資料
+        return item.name.toLowerCase().includes(keyword.toLowerCase())
+      })
+      res.render('index', { rests: filterRests, keyword }) // 將資料傳給 index 樣板
+    })
+    .catch(error => console.error(error)) // 錯誤處理
+})
 
 // 開啟並監聽伺服器 port 3000
 app.listen(3000, () => {
