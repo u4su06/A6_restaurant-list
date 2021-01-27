@@ -1,13 +1,14 @@
 <!-- ./views/index.handlebars -->
 <div class="container mt-5">
 
-  <!-- search bar -->
-  <div class="row" id="search-bar">
-    <div class="col-12">
-      <form action="/search">
+  {{!-- 兩組條件一個表單，送到同一個路由處理 --}}
+  <form action="/search">
+    <div class="row">
+      <!-- search bar -->
+      <div class="col-8">
         <div class="input-group mb-5">
           <input type="text" name="keyword" value="{{keyword}}" class="form-control" placeholder="輸入餐廳..."
-            aria-label="Movie Name..." aria-describedby="search-button">
+            aria-label="Restaurant Name..." aria-describedby="search-button">
           <div class="input-group-append mr-auto">
             <button class="btn btn-outline-secondary" type="submit" id="search-button">
               <i class="fas fa-search"></i>
@@ -15,9 +16,20 @@
             <a href="./rests/new" class="btn btn-outline-dark"><i class="fas fa-plus"></i></a>
           </div>
         </div>
-      </form>
+      </div>
+      {{!-- sort option --}}
+      <div class="col-4 mb-5">
+        <select name="sort" class="form-control btn-outline-secondary" onchange="this.form.submit()">
+          <option value="" selected disabled hidden>Sort</option>
+          <option value="name" {{#if option.name }} selected {{/if}}>A -> Z</option>
+          <option value="-name" {{#if option.-name }} selected {{/if}}>Z -> A</option>
+          <option value="category" {{#if option.category }} selected {{/if}}>類別</option>
+          <option value="location" {{#if option.location }} selected {{/if}}>地區</option>
+        </select>
+      </div>
     </div>
-  </div>
+  </form>
+
   <!-- restaurant list -->
   <div class="row" id="data-panel">
     {{#each rests}}
