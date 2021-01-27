@@ -2,15 +2,9 @@ const Restaurant = require('../restaurant.js') // 載入 restaurant model
 const restaurantJSON = require('./restaurant.json') // 載入原始資料
 
 // 載入連線設定
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
-const db = mongoose.connection
+const db = require('../../config/mongoose')
 
-db.on('error', () => {
-  console.log('mongodb error!')
-})
 db.once('open', () => {
-  console.log('mongodb connected!')
 
   const rest = restaurantJSON.results
   for (let i = 0; i < rest.length; i++) {
