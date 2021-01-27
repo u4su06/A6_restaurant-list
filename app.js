@@ -4,6 +4,7 @@ const bodyParser = require('body-parser') // 引用 body-parser
 const mongoose = require('mongoose') // 載入 mongoose
 const Restaurant = require('./models/restaurant') //載入restaurant model
 const methodOverride = require('method-override') // 載入 method-override
+const routes = require('./routes')  // 引用路由器
 
 
 const app = express()
@@ -29,79 +30,8 @@ app.set('view engine', 'hbs')
 app.use(bodyParser.urlencoded({ extended: true }))
 // 設定每一筆請求都會透過 methodOverride 進行前置處理
 app.use(methodOverride('_method'))
-
-// 設定首頁路由
-app.get('/', (req, res) => {
-  Restaurant.find() // 取出 Restaurant model 裡的所有資料
-    .lean() // 把 Mongoose 的 Model 物件轉換成乾淨的 JavaScript 資料陣列
-    .sort({ _id: 'desc' }) //排序
-    .then(rests => res.render('index', { rests })) // 將資料傳給 index 樣板
-    .catch(error => console.error(error)) // 錯誤處理
-})
-
-// 新增頁面
-app.get('/rests/new', (req, res) => {
-  return res.render('new')
-})
-
-app.post('/rests', (req, res) => {
-  const item = req.body
-  return Restaurant.create({
-    name: item.name,
-    category: item.category,
-    phone: item.phone,
-    location: item.location,
-    description: item.description,
-    image: item.img,
-    rating: item.rating
-  })
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
-
-// detail 頁面
-app.get('/rests/:id', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
-    .lean()
-    .then((rest) => res.render('detail', { rest }))
-    .catch(error => console.log(error))
-})
-
-// edit 頁面
-app.get('/rests/:id/edit', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
-    .lean()
-    .then((rest) => res.render('edit', { rest }))
-    .catch(error => console.log(error))
-})
-
-app.put('/rests/:id', (req, res) => {
-  const id = req.params.id
-  const item = req.body
-  return Restaurant.findById(id)
-    .then(rest => {
-      rest.name = item.name
-      rest.category = item.category
-      rest.phone = item.phone
-      rest.location = item.location
-      rest.description = item.description
-      rest.rating = item.rating
-      return rest.save()
-    })
-    .then(() => res.redirect(`/rests/${id}`))
-    .catch(error => console.log(error))
-})
-
-// 刪除功能
-app.delete('/rests/:id', (req, res) => {
-  const id = req.params.id
-  return Restaurant.findById(id)
-    .then(rest => rest.remove())
-    .then(() => res.redirect('/'))
-    .catch(error => console.log(error))
-})
+// 將 request 導入路由器
+app.use(routes)
 
 // 搜尋功能
 app.get('/search', (req, res) => {
