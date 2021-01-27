@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')  // 載入樣板引擎
 const bodyParser = require('body-parser') // 引用 body-parser
 const mongoose = require('mongoose') // 載入 mongoose
 const Restaurant = require('./models/restaurant') //載入restaurant model
+const methodOverride = require('method-override') // 載入 method-override
 
 
 const app = express()
@@ -26,6 +27,8 @@ app.set('view engine', 'hbs')
 
 // setting body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
+// 設定每一筆請求都會透過 methodOverride 進行前置處理
+app.use(methodOverride('_method'))
 
 // 設定首頁路由
 app.get('/', (req, res) => {
@@ -74,7 +77,7 @@ app.get('/rests/:id/edit', (req, res) => {
     .catch(error => console.log(error))
 })
 
-app.post('/rests/:id/edit', (req, res) => {
+app.put('/rests/:id', (req, res) => {
   const id = req.params.id
   const item = req.body
   return Restaurant.findById(id)
@@ -92,7 +95,7 @@ app.post('/rests/:id/edit', (req, res) => {
 })
 
 // 刪除功能
-app.post('/rests/:id/delete', (req, res) => {
+app.delete('/rests/:id', (req, res) => {
   const id = req.params.id
   return Restaurant.findById(id)
     .then(rest => rest.remove())
